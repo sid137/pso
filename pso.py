@@ -134,7 +134,7 @@ def test():
     import math
     # func = lambda x:math.cos(x*math.sin(x*0.3)-x) / 1.5
     func = lambda x:math.cos(x) * math.exp(math.sin(x)) * math.sin(x)  / 1.5
-    p = PSO(4, -4.5, 4.5, phi=1, phi2=1, lr=0.5, max_iter=20, func=func)
+    p = PSO(10, -4.5, 4.5, phi=1, phi2=1, lr=0.5, max_iter=20, func=func)
     printer = PygamePrinter(p)
     p.run(update_func=printer)
     print p

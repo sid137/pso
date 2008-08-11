@@ -91,6 +91,7 @@ int main()
 
 
 void update_velocity(particle  *p) {
+     /* PSO specific velocity update equation */
      double phi1 = uniform(0,2);
      double phi2 = uniform(0,2);
 
@@ -98,6 +99,8 @@ void update_velocity(particle  *p) {
 }
 
 void update_position(particle  *p) {
+     /* Updates particle position vector:  x(i+1) = x(i) + v(i+1)   */
+
      p->position = p->position + p->velocity;
      if ((p->position < domain_min) || (p->position > domain_max))
           initialize_particle(p);
@@ -106,6 +109,12 @@ void update_position(particle  *p) {
 
 
 void evaluate(particle  *p) {
+     /* returns the value of the objective function when evaluated at its  position 
+        returns f(x) given x 
+        Also updates particle best position and fitness, and global bests if  necessary 
+       
+     */
+
      p->fitness = function(p->position);
 
      if (p->fitness < p->best_fitness) {
@@ -120,6 +129,8 @@ void evaluate(particle  *p) {
 }
 
 double uniform(double a, double b){
+     /* returns a uniform randomvariable between  a and b */
+
      return rand()/(RAND_MAX+1.0)*(b-a)+a;
 }
 
