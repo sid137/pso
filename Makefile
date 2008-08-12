@@ -1,8 +1,12 @@
 CC=gcc
 CFLAGS=-Wall
 LIBS=-lm
-TARGETS=mypso
-mypso: 
+TARGETS=psond pso1d
+
+psond:
+	$(CC) $(CFLAGS) $(LIBS) -o $@ $@.c 
+
+pso1d: 
 	$(CC) $(CFLAGS) $(LIBS) -o $@ $@.c 
 
 clean:
